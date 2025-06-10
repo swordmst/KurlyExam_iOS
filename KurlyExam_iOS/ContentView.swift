@@ -8,17 +8,31 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var model: SearchModel
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationView {
+            VStack {
+                Image(systemName: "globe")
+                    .imageScale(.large)
+                    .foregroundStyle(.tint)
+                Text("Hello, world!")
+            }
+            .padding()
+            .navigationTitle("Search")
         }
-        .padding()
+        .searchable(
+            text: $model.searchText,
+            placement: .navigationBarDrawer,
+            prompt: "Search..."
+          )
+        .onSubmit(of: .search) {
+            model.search()
+        }
     }
 }
 
 #Preview {
     ContentView()
+        .environmentObject(SearchModel())
 }
