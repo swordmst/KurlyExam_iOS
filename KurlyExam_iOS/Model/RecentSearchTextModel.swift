@@ -35,12 +35,11 @@ class RecentSearchTextModel: ObservableObject {
     
     func add(_ text: String) {
         if let index = list.firstIndex(where: { $0.text == text }) {
-            list[index].updateDate()
-        } else {
-            list.append(RecentSearchTextItem(text: text))
+            list.remove(at: index)
         }
+        list.insert(RecentSearchTextItem(text: text), at: 0)
     }
-    
+
     func remove(_ text: String) {
         list = list.filter({ $0.text != text })
     }

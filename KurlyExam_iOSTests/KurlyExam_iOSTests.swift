@@ -38,4 +38,16 @@ struct KurlyExam_iOSTests {
         model.removeAll()
         #expect(model.list.count == 0)
     }
+    
+    @Test("sorted List From RecentSearchTextModel") func sortedListRecentSearchText() async throws {
+        let model = RecentSearchTextModel()
+        model.add("test")
+        model.add("test1")
+        model.add("test2")
+        model.add("test3")
+        let sorted = model.list.sorted { $0.date > $1.date }
+        
+        #expect(model.list == sorted)
+    }
+    
 }
