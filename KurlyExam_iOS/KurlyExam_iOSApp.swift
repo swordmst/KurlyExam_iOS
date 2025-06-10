@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct KurlyExam_iOSApp: App {
+    let model = SearchModel()
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(model)
         }
     }
 }
