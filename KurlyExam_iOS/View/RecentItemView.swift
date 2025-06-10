@@ -10,10 +10,13 @@ struct RecentItemView: View {
     @EnvironmentObject var model: SearchModel
     
     var body: some View {
-        ChipLayout(verticalSpacing: 8, horizontalSpacing: 8) {
-            ForEach(model.list, id: \.self) { item in
-                chipItem(item)
+        VStack {
+            ChipLayout(verticalSpacing: 8, horizontalSpacing: 8) {
+                ForEach(model.list, id: \.self) { item in
+                    chipItem(item)
+                }
             }
+            removeAllView()
         }
     }
     
@@ -35,5 +38,16 @@ struct RecentItemView: View {
         .background(
             Capsule().foregroundStyle(.gray.opacity(0.2))
         )
+    }
+    func removeAllView() -> some View {
+        HStack {
+            Spacer()
+            Button {
+                model.removeAllRecentItem()
+            } label: {
+                Text("전체 삭제")
+                    .foregroundColor(.red)
+            }
+        }
     }
 }

@@ -16,6 +16,7 @@ struct ContentView: View {
                 if model.searchText.isEmpty {
                     RecentItemView()
                         .environmentObject(model)
+                    Spacer()
                 }
             }
             .padding()
