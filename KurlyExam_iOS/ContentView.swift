@@ -13,8 +13,10 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack {
-                RecentItemView()
-                    .environmentObject(model)
+                if model.searchText.isEmpty {
+                    RecentItemView()
+                        .environmentObject(model)
+                }
             }
             .padding()
             .navigationTitle("Search")

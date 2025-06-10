@@ -15,9 +15,6 @@ struct ChipLayout: Layout {
     }
     
     func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) {
-        print("bound: ", bounds)
-        print("proposal: ", proposal)
-        
         var sumX: CGFloat = bounds.minX
         var sumY: CGFloat = bounds.minY
        
