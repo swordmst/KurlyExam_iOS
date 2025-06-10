@@ -13,10 +13,11 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Image(systemName: "globe")
-                    .imageScale(.large)
-                    .foregroundStyle(.tint)
-                Text("Hello, world!")
+                if model.searchText.isEmpty {
+                    RecentItemView()
+                        .environmentObject(model)
+                    Spacer()
+                }
             }
             .padding()
             .navigationTitle("Search")
