@@ -16,7 +16,7 @@ struct RecentSearchTextItem: Sendable, Codable, Hashable, Equatable {
 }
 
 class RecentSearchTextModel: ObservableObject {
-    @Published private(set) var list: [RecentSearchTextItem] = [] {
+    private(set) var list: [RecentSearchTextItem] = [] {
         didSet {
             update()
         }
@@ -33,19 +33,25 @@ class RecentSearchTextModel: ObservableObject {
         list = (try? userDefaults.get(key: key)) ?? []
     }
     
-    func add(_ text: String) {
+    @discardableResult
+    func add(_ text: String) -> [RecentSearchTextItem] {
         if let index = list.firstIndex(where: { $0.text == text }) {
             list.remove(at: index)
         }
         list.insert(RecentSearchTextItem(text: text), at: 0)
+        return list
     }
 
-    func remove(_ text: String) {
+    @discardableResult
+    func remove(_ text: String) -> [RecentSearchTextItem] {
         list = list.filter({ $0.text != text })
+        return list
     }
     
-    func removeAll() {
+    @discardableResult
+    func removeAll() -> [RecentSearchTextItem] {
         list = []
+        return list
     }
     
     private func update() {

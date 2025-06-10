@@ -11,6 +11,7 @@ import Testing
 struct KurlyExam_iOSTests {
     @Test("Add From RecentSearchTextModel") func addRecentSearchText() async throws {
         let model = RecentSearchTextModel()
+        model.removeAll()
         model.add("test")
         
         #expect(model.list.count == 1 && model.list.first?.text == "test")
@@ -22,6 +23,7 @@ struct KurlyExam_iOSTests {
     
     @Test("Remove, RemoveAll From RecentSearchTextModel") func removeRecentSearchText() async throws {
         let model = RecentSearchTextModel()
+        model.removeAll()
         model.add("test")
         model.add("test1")
         model.add("test2")
@@ -41,6 +43,7 @@ struct KurlyExam_iOSTests {
     
     @Test("sorted List From RecentSearchTextModel") func sortedListRecentSearchText() async throws {
         let model = RecentSearchTextModel()
+        model.removeAll()
         model.add("test")
         model.add("test1")
         model.add("test2")

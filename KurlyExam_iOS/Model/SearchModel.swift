@@ -9,17 +9,27 @@ import Foundation
 import SwiftUI
 
 class SearchModel: ObservableObject {
+    @Published private(set) var list: [RecentSearchTextItem] = []
     @ObservedObject var recentModel = RecentSearchTextModel()
     @Published var searchText: String = ""
     
-    func search() {
-        //TODO: Enpoint API연동
-        recentModel.add(searchText)
+    init() {
+        list = recentModel.list
     }
     
     @MainActor
-    func recentList() -> [RecentSearchTextItem] {
-        let sorted = recentModel.list.prefix(10)
-        return Array(sorted)
+    func search() {
+        //TODO: Enpoint API연동
+        list = recentModel.add(searchText)
+    }
+    
+    @MainActor
+    func removeRecentItem(_ item: RecentSearchTextItem) {
+        list = recentModel.remove(item.text)
+    }
+    
+    @MainActor
+    func removeAllRecentItem() {
+        list = recentModel.removeAll()
     }
 }
