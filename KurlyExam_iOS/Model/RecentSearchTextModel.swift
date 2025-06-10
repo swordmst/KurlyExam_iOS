@@ -15,7 +15,7 @@ struct RecentSearchTextItem: Sendable, Codable, Hashable, Equatable {
     }
 }
 
-class RecentSearchTextModel: ObservableObject {
+class RecentSearchTextModel {
     private(set) var list: [RecentSearchTextItem] = [] {
         didSet {
             update()
