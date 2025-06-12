@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		FA7C66A62DFA7F1A003BFB23 /* NetworkModule in Frameworks */ = {isa = PBXBuildFile; productRef = FA7C66A52DFA7F1A003BFB23 /* NetworkModule */; };
+		FA7C66A92DFA7F4F003BFB23 /* NetworkModule in Frameworks */ = {isa = PBXBuildFile; productRef = FA7C66A82DFA7F4F003BFB23 /* NetworkModule */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		FA7C664B2DF6DCAF003BFB23 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +57,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA7C66A62DFA7F1A003BFB23 /* NetworkModule in Frameworks */,
+				FA7C66A92DFA7F4F003BFB23 /* NetworkModule in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +119,8 @@
 			);
 			name = KurlyExam_iOS;
 			packageProductDependencies = (
+				FA7C66A52DFA7F1A003BFB23 /* NetworkModule */,
+				FA7C66A82DFA7F4F003BFB23 /* NetworkModule */,
 			);
 			productName = KurlyExam_iOS;
 			productReference = FA7C663A2DF6DCAD003BFB23 /* KurlyExam_iOS.app */;
@@ -195,6 +204,9 @@
 			);
 			mainGroup = FA7C66312DF6DCAD003BFB23;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				FA7C66A72DFA7F4F003BFB23 /* XCLocalSwiftPackageReference "KurlyExam_iOS/Modules/NetworkModule" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = FA7C663B2DF6DCAD003BFB23 /* Products */;
 			projectDirPath = "";
@@ -552,6 +564,24 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		FA7C66A72DFA7F4F003BFB23 /* XCLocalSwiftPackageReference "KurlyExam_iOS/Modules/NetworkModule" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = KurlyExam_iOS/Modules/NetworkModule;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FA7C66A52DFA7F1A003BFB23 /* NetworkModule */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = NetworkModule;
+		};
+		FA7C66A82DFA7F4F003BFB23 /* NetworkModule */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = NetworkModule;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FA7C66322DF6DCAD003BFB23 /* Project object */;
 }
