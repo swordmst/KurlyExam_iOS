@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FA7C66A62DFA7F1A003BFB23 /* NetworkModule in Frameworks */ = {isa = PBXBuildFile; productRef = FA7C66A52DFA7F1A003BFB23 /* NetworkModule */; };
-		FA7C66A92DFA7F4F003BFB23 /* NetworkModule in Frameworks */ = {isa = PBXBuildFile; productRef = FA7C66A82DFA7F4F003BFB23 /* NetworkModule */; };
+		FA7C67432DFA9EDF003BFB23 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = FA7C67422DFA9EDF003BFB23 /* Alamofire */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,8 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA7C66A62DFA7F1A003BFB23 /* NetworkModule in Frameworks */,
-				FA7C66A92DFA7F4F003BFB23 /* NetworkModule in Frameworks */,
+				FA7C67432DFA9EDF003BFB23 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,8 +117,7 @@
 			);
 			name = KurlyExam_iOS;
 			packageProductDependencies = (
-				FA7C66A52DFA7F1A003BFB23 /* NetworkModule */,
-				FA7C66A82DFA7F4F003BFB23 /* NetworkModule */,
+				FA7C67422DFA9EDF003BFB23 /* Alamofire */,
 			);
 			productName = KurlyExam_iOS;
 			productReference = FA7C663A2DF6DCAD003BFB23 /* KurlyExam_iOS.app */;
@@ -205,7 +202,7 @@
 			mainGroup = FA7C66312DF6DCAD003BFB23;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				FA7C66A72DFA7F4F003BFB23 /* XCLocalSwiftPackageReference "KurlyExam_iOS/Modules/NetworkModule" */,
+				FA7C67412DFA9EDF003BFB23 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = FA7C663B2DF6DCAD003BFB23 /* Products */;
@@ -565,21 +562,22 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCLocalSwiftPackageReference section */
-		FA7C66A72DFA7F4F003BFB23 /* XCLocalSwiftPackageReference "KurlyExam_iOS/Modules/NetworkModule" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = KurlyExam_iOS/Modules/NetworkModule;
+/* Begin XCRemoteSwiftPackageReference section */
+		FA7C67412DFA9EDF003BFB23 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.10.2;
+			};
 		};
-/* End XCLocalSwiftPackageReference section */
+/* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		FA7C66A52DFA7F1A003BFB23 /* NetworkModule */ = {
+		FA7C67422DFA9EDF003BFB23 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = NetworkModule;
-		};
-		FA7C66A82DFA7F4F003BFB23 /* NetworkModule */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = NetworkModule;
+			package = FA7C67412DFA9EDF003BFB23 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
