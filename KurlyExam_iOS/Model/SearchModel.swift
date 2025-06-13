@@ -50,11 +50,10 @@ class SearchModel: ObservableObject {
             
             do {
                 let result: GithubRepoModel = try await network.request(endpoint)
-                let updated = SearchResult(text: searchResult.text,
-                                           count: result.totalCount ?? 0,
-                                           page: searchResult.page + 1,
-                                           items: searchResult.items + (result.items ?? []))
-                searchResult = updated
+                searchResult = SearchResult(text: searchResult.text,
+                                            count: result.totalCount ?? 0,
+                                            page: searchResult.page + 1,
+                                            items: searchResult.items + (result.items ?? []))
             } catch {
                 //TODO: Error 처리
             }
