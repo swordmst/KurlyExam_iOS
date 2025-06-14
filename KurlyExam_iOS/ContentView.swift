@@ -22,7 +22,6 @@ struct ContentView: View {
                         .environmentObject(model)
                 }
             }
-            .padding()
             .navigationTitle("Search")
         }
         .searchable(
