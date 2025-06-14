@@ -20,7 +20,7 @@ struct GithubRepoModel: Codable, Sendable {
 }
 
 // MARK: - Item
-struct Item: Codable, Sendable {
+struct Item: Codable, Sendable, Hashable, Equatable {
     let id: Int?
     let nodeID, name, fullName: String?
     let itemPrivate: Bool?
@@ -147,7 +147,7 @@ struct Item: Codable, Sendable {
 }
 
 // MARK: - License
-struct License: Codable, Sendable {
+struct License: Codable, Sendable, Hashable, Equatable {
     let key: String?
     let name: String?
     let spdxID: String?
@@ -163,7 +163,7 @@ struct License: Codable, Sendable {
 }
 
 // MARK: - Owner
-struct Owner: Codable, Sendable {
+struct Owner: Codable, Sendable, Hashable, Equatable {
     let login: String?
     let id: Int?
     let nodeID: String?
