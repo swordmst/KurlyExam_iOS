@@ -26,7 +26,11 @@ struct ContentView: View {
                     .environmentObject(model)
                     Spacer()
                 } else if model.isSearching {
-                    
+                    AutoCompleteListView() {
+                        model.searchText = $0
+                        model.search()
+                    }
+                    .environmentObject(model)
                 } else {
                     SearchResultView() {
                         path.append(NavigationContent.weblink($0))
