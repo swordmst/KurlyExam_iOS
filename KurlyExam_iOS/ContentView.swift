@@ -19,8 +19,11 @@ struct ContentView: View {
         NavigationStack(path: $path) {
             VStack {
                 if model.searchText.isEmpty, model.searchResult.count == 0 {
-                    RecentItemView()
-                        .environmentObject(model)
+                    RecentItemView() {
+                        model.searchText = $0
+                        model.search()
+                    }
+                    .environmentObject(model)
                     Spacer()
                 } else {
                     SearchResultView() {

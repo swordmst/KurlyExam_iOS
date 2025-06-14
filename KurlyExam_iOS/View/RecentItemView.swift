@@ -9,6 +9,8 @@ import SwiftUI
 struct RecentItemView: View {
     @EnvironmentObject var model: SearchModel
     
+    let action: @MainActor (String) -> Void
+    
     var body: some View {
         VStack {
             ChipLayout(verticalSpacing: 8, horizontalSpacing: 8) {
@@ -38,6 +40,9 @@ struct RecentItemView: View {
         .background(
             Capsule().foregroundStyle(.gray.opacity(0.2))
         )
+        .onTapGesture {
+            action(item.text)
+        }
     }
     func removeAllView() -> some View {
         HStack {
