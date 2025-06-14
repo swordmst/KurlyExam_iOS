@@ -7,18 +7,58 @@
 
 import SwiftUI
 
+enum NavigationContent: Hashable {
+    case weblink(String?)
+}
+
 struct ContentView: View {
+    @EnvironmentObject var model: SearchModel
+    @State var path = NavigationPath()
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack(path: $path) {
+            VStack {
+                if model.searchText.isEmpty {
+                    RecentItemView() {
+                        model.searchText = $0
+                        model.search()
+                    }
+                    .environmentObject(model)
+                    Spacer()
+                } else if model.isSearching {
+                    AutoCompleteListView() {
+                        model.searchText = $0
+                        model.search()
+                    }
+                    .environmentObject(model)
+                } else {
+                    SearchResultView() {
+                        path.append(NavigationContent.weblink($0))
+                    }
+                    .environmentObject(model)
+                }
+            }
+            .navigationTitle("Search")
+            .navigationDestination(for: NavigationContent.self) { destination in
+                switch destination {
+                case .weblink(let link):
+                    WebView(link)
+                        .navigationTitle("Repo Detail")
+                }
+            }
         }
-        .padding()
+        .searchable(
+            text: $model.searchText,
+            placement: .navigationBarDrawer,
+            prompt: "Search..."
+          )
+        .onSubmit(of: .search) {
+            model.search()
+        }
     }
 }
 
 #Preview {
     ContentView()
+        .environmentObject(SearchModel())
 }
