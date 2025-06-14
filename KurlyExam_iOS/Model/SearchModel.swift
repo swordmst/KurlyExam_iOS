@@ -30,9 +30,11 @@ class SearchModel: ObservableObject {
     @Published var searchText: String = "" {
         didSet {
             isSearching = searchText != ""
+            updateAutoCompleteList(searchText)
         }
     }
     @Published var isSearching: Bool = false
+    @Published var autoCompleteList: [RecentSearchTextItem] = []
     
     @Published private(set) var searchResult = SearchResult(text: "")
     
@@ -78,5 +80,9 @@ class SearchModel: ObservableObject {
     
     private func updateRecentList(_ items: [RecentSearchTextItem]) {
         list = Array(items.prefix(10))
+    }
+    
+    private func updateAutoCompleteList(_ text: String) {
+        autoCompleteList = recentModel.list.filter { $0.text.contains(text) }
     }
 }
