@@ -9,7 +9,7 @@ import Kingfisher
 
 struct SearchResultView: View {
     @EnvironmentObject var model: SearchModel
-    
+    let action: @MainActor (String?) -> Void
     var body: some View {
         VStack {
             resultCount()
@@ -45,12 +45,18 @@ struct SearchResultView: View {
                     .font(.system(size: 12))
                     .foregroundStyle(.secondary)
             }
+            Spacer()
         }
         .padding()
+        .background(Color.clear)
+        .contentShape(Rectangle())
+        .onTapGesture {
+            action(item.htmlURL)
+        }
     }
 }
 
 #Preview {
-    SearchResultView()
+    SearchResultView() { _ in }
         .environmentObject(SearchModel())
 }
