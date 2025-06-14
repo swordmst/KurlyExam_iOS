@@ -27,7 +27,12 @@ class SearchModel: ObservableObject {
     private let network = NetworkModule()
     
     @Published private(set) var list: [RecentSearchTextItem] = []
-    @Published var searchText: String = ""
+    @Published var searchText: String = "" {
+        didSet {
+            isSearching = searchText != ""
+        }
+    }
+    @Published var isSearching: Bool = false
     
     @Published private(set) var searchResult = SearchResult(text: "")
     
@@ -37,6 +42,7 @@ class SearchModel: ObservableObject {
     
     @MainActor
     func search() {
+        isSearching = false
         searchResult = SearchResult(text: searchText)
         updateSearchResult()
         updateRecentList(recentModel.add(searchText))
