@@ -7,20 +7,36 @@
 
 import SwiftUI
 
+enum NavigationContent: Hashable {
+    case weblink(String?)
+}
+
 struct ContentView: View {
     @EnvironmentObject var model: SearchModel
+    @State var path = NavigationPath()
     
     var body: some View {
-        NavigationView {
+        NavigationStack(path: $path) {
             VStack {
-                if model.searchText.isEmpty {
+                if model.searchText.isEmpty, model.searchResult.count == 0 {
                     RecentItemView()
                         .environmentObject(model)
                     Spacer()
+                } else {
+                    SearchResultView() {
+                        path.append(NavigationContent.weblink($0))
+                    }
+                    .environmentObject(model)
                 }
             }
-            .padding()
             .navigationTitle("Search")
+            .navigationDestination(for: NavigationContent.self) { destination in
+                switch destination {
+                case .weblink(let link):
+                    WebView(link)
+                        .navigationTitle("Repo Detail")
+                }
+            }
         }
         .searchable(
             text: $model.searchText,

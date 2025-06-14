@@ -17,7 +17,7 @@ struct RecentItemView: View {
                 }
             }
             removeAllView()
-        }
+        }.padding()
     }
     
     func chipItem(_ item: RecentSearchTextItem) -> some View {

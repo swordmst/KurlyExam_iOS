@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		FA7C67432DFA9EDF003BFB23 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = FA7C67422DFA9EDF003BFB23 /* Alamofire */; };
+		FA7C674B2DFD1527003BFB23 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = FA7C674A2DFD1527003BFB23 /* Kingfisher */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		FA7C664B2DF6DCAF003BFB23 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +57,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA7C674B2DFD1527003BFB23 /* Kingfisher in Frameworks */,
+				FA7C67432DFA9EDF003BFB23 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +119,8 @@
 			);
 			name = KurlyExam_iOS;
 			packageProductDependencies = (
+				FA7C67422DFA9EDF003BFB23 /* Alamofire */,
+				FA7C674A2DFD1527003BFB23 /* Kingfisher */,
 			);
 			productName = KurlyExam_iOS;
 			productReference = FA7C663A2DF6DCAD003BFB23 /* KurlyExam_iOS.app */;
@@ -195,6 +204,10 @@
 			);
 			mainGroup = FA7C66312DF6DCAD003BFB23;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				FA7C67412DFA9EDF003BFB23 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				FA7C67492DFD1527003BFB23 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = FA7C663B2DF6DCAD003BFB23 /* Products */;
 			projectDirPath = "";
@@ -552,6 +565,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FA7C67412DFA9EDF003BFB23 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.10.2;
+			};
+		};
+		FA7C67492DFD1527003BFB23 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.3.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FA7C67422DFA9EDF003BFB23 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FA7C67412DFA9EDF003BFB23 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		FA7C674A2DFD1527003BFB23 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FA7C67492DFD1527003BFB23 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FA7C66322DF6DCAD003BFB23 /* Project object */;
 }
