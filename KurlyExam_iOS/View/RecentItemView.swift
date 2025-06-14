@@ -9,15 +9,19 @@ import SwiftUI
 struct RecentItemView: View {
     @EnvironmentObject var model: SearchModel
     
+    let action: @MainActor (String) -> Void
+    
     var body: some View {
-        VStack {
+        VStack(spacing: 16) {
             ChipLayout(verticalSpacing: 8, horizontalSpacing: 8) {
                 ForEach(model.list, id: \.self) { item in
                     chipItem(item)
                 }
             }
             removeAllView()
+            Divider()
         }.padding()
+        
     }
     
     func chipItem(_ item: RecentSearchTextItem) -> some View {
@@ -38,7 +42,11 @@ struct RecentItemView: View {
         .background(
             Capsule().foregroundStyle(.gray.opacity(0.2))
         )
+        .onTapGesture {
+            action(item.text)
+        }
     }
+    
     func removeAllView() -> some View {
         HStack {
             Spacer()
@@ -50,4 +58,9 @@ struct RecentItemView: View {
             }
         }
     }
+}
+
+#Preview {
+    RecentItemView() { _ in }
+        .environmentObject(SearchModel())
 }

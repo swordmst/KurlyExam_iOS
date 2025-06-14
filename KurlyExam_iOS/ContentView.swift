@@ -18,10 +18,15 @@ struct ContentView: View {
     var body: some View {
         NavigationStack(path: $path) {
             VStack {
-                if model.searchText.isEmpty, model.searchResult.count == 0 {
-                    RecentItemView()
-                        .environmentObject(model)
+                if model.searchText.isEmpty {
+                    RecentItemView() {
+                        model.searchText = $0
+                        model.search()
+                    }
+                    .environmentObject(model)
                     Spacer()
+                } else if model.isSearching {
+                    
                 } else {
                     SearchResultView() {
                         path.append(NavigationContent.weblink($0))
