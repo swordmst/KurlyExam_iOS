@@ -36,6 +36,7 @@ class SearchModel: ObservableObject {
     @Published var isSearching: Bool = false
     @Published var autoCompleteList: [RecentSearchTextItem] = []
     
+    @Published private(set) var isLoading: Bool = false
     @Published private(set) var searchResult = SearchResult(text: "")
     
     init() {
@@ -57,7 +58,10 @@ class SearchModel: ObservableObject {
             let endpoint = NetworkEndpoint(method: .GET, path: path)
             
             do {
+                isLoading = true
                 let result: GithubRepoModel = try await network.request(endpoint)
+                isLoading = false
+                
                 searchResult = SearchResult(text: searchResult.text,
                                             count: result.totalCount ?? 0,
                                             page: searchResult.page + 1,

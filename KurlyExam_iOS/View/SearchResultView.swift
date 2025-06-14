@@ -12,11 +12,16 @@ struct SearchResultView: View {
     let action: @MainActor (String?) -> Void
     var body: some View {
         VStack {
-            resultCount()
+            if model.searchResult.count > 0 {
+                resultCount()
+            }
             ScrollView {
                 LazyVStack(alignment: .leading) {
                     ForEach(model.searchResult.items, id: \.self) { item in
                         resultItem(item)
+                    }
+                    if model.isLoading {
+                        loadingView().frame(height: 52)
                     }
                 }
             }
@@ -52,6 +57,14 @@ struct SearchResultView: View {
         .contentShape(Rectangle())
         .onTapGesture {
             action(item.htmlURL)
+        }
+    }
+    
+    func loadingView() -> some View {
+        HStack {
+            Spacer()
+            ProgressView()
+            Spacer()
         }
     }
 }
