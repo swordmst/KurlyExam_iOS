@@ -36,6 +36,7 @@ class SearchModel: ObservableObject {
     @Published var isSearching: Bool = false
     @Published var autoCompleteList: [RecentSearchTextItem] = []
     
+    @Published private(set) var isLoading: Bool = false
     @Published private(set) var searchResult = SearchResult(text: "")
     
     init() {
@@ -57,12 +58,16 @@ class SearchModel: ObservableObject {
             let endpoint = NetworkEndpoint(method: .GET, path: path)
             
             do {
+                isLoading = true
                 let result: GithubRepoModel = try await network.request(endpoint)
+                isLoading = false
+                
                 searchResult = SearchResult(text: searchResult.text,
                                             count: result.totalCount ?? 0,
                                             page: searchResult.page + 1,
                                             items: searchResult.items + (result.items ?? []))
             } catch {
+                isLoading = false
                 //TODO: Error 처리
             }
         }
@@ -76,6 +81,16 @@ class SearchModel: ObservableObject {
     @MainActor
     func removeAllRecentItem() {
         updateRecentList(recentModel.removeAll())
+    }
+    
+    @MainActor
+    func checkListUpdate(_ item: Item) {
+        guard searchResult.items.count > 0 else { return }
+        let remainCount = 10
+        let index = searchResult.items.count > remainCount ? searchResult.items.count - remainCount : 0
+        if searchResult.items[index] == item {
+            updateSearchResult()
+        }
     }
     
     private func updateRecentList(_ items: [RecentSearchTextItem]) {
