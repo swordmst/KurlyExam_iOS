@@ -67,6 +67,7 @@ class SearchModel: ObservableObject {
                                             page: searchResult.page + 1,
                                             items: searchResult.items + (result.items ?? []))
             } catch {
+                isLoading = false
                 //TODO: Error 처리
             }
         }
@@ -80,6 +81,16 @@ class SearchModel: ObservableObject {
     @MainActor
     func removeAllRecentItem() {
         updateRecentList(recentModel.removeAll())
+    }
+    
+    @MainActor
+    func checkListUpdate(_ item: Item) {
+        guard searchResult.items.count > 0 else { return }
+        let remainCount = 10
+        let index = searchResult.items.count > remainCount ? searchResult.items.count - remainCount : 0
+        if searchResult.items[index] == item {
+            updateSearchResult()
+        }
     }
     
     private func updateRecentList(_ items: [RecentSearchTextItem]) {

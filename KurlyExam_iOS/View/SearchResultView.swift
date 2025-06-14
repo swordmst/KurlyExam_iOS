@@ -58,6 +58,9 @@ struct SearchResultView: View {
         .onTapGesture {
             action(item.htmlURL)
         }
+        .onAppear {
+            model.checkListUpdate(item)
+        }
     }
     
     func loadingView() -> some View {
